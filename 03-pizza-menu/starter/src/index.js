@@ -67,16 +67,24 @@ const Header = () => {
 
 const Menu = () => {
   const pizzas = pizzaData;
-  const numPizza = pizzas.length
+  const numPizza = pizzas.length;
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      {numPizza > 0 && (
-        <ul className="pizzas">
-          {pizzaData.map((pizza) => {
-            return <Pizza pizzaObj={pizza} key={pizza.name} />;
-          })}
-        </ul>
+      {numPizza > 0 ? (
+        <>
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzaData.map((pizza) => {
+              return <Pizza pizzaObj={pizza} key={pizza.name} />;
+            })}
+          </ul>
+        </>
+      ) : (
+        <p>We're still working on our menu, please comeback later.</p>
       )}
 
       {/* <Pizza
@@ -106,26 +114,30 @@ const Footer = () => {
   // }else {alert("Sorry we're closed")}
   return (
     <footer className="footer">
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
           <p>We're open until {closeHour}:00. Come visit us or order online.</p>
           <button className="btn">Order</button>
         </div>
+      ) : (
+        <p>
+          We're happy to welcome you between {openHour}:00 and {closeHour}:00.{" "}
+        </p>
       )}
     </footer>
   );
 };
 
-const Pizza = (props) => {
+const Pizza = ({ pizzaObj }) => {
   return (
-    <div className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
-      <li>
-        <h3>{props.pizzaObj.name}</h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>{props.pizzaObj.price}</span>
-      </li>
-    </div>
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
+      <div>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.soldOut ? "Sold Out" : pizzaObj.price}</span>
+      </div>
+    </li>
   );
 };
 
