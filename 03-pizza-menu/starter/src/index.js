@@ -69,7 +69,18 @@ const Menu = () => {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
+      <Pizza
+        name="Pizza Spinaci"
+        photoName="pizzas/spinaci.jpg"
+        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+        price={10}
+      />
+      <Pizza
+        name="Pizza Funghi"
+        photoName="pizzas/funghi.jpg"
+        ingredients="Tomato, mozarella, mushrooms, and onion"
+        price={12}
+      />
     </main>
   );
 };
@@ -84,17 +95,22 @@ const Footer = () => {
   //     alert('We are currently open!')
   // }else {alert("Sorry we're closed")}
   return (
-    <footer className="footer">{new Date().toLocaleTimeString()} We're Currently Open</footer>
+    <footer className="footer">
+      {new Date().toLocaleTimeString()} We're Currently Open
+    </footer>
   );
 };
 
-const Pizza = () => {
+const Pizza = (props) => {
   return (
-    <>
-      <img src="pizzas/spinaci.jpg" alt="pizza spinaci" />
-      <h3>Pizza Spinaci</h3>
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
-    </>
+    <div className="pizza">
+      <img src={props.photoName} alt={props.name} />
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>
+        <span>{props.price}</span>
+      </div>
+    </div>
   );
 };
 
