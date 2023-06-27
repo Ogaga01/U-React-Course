@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import Navbar from "./Navbar";
 import Main from "./Main";
 
@@ -52,20 +52,14 @@ export const tempWatchedData = [
 export const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
-// const KEY = "fc45ec2d";
-// http://www.omdbapi.com/?apikey=fc45ec2d&s=interstellar
-
 const App = () => {
-  // fetch(`http://www.omdbapi.com/?apikey=1c7bc41a&s=avatar`)
-  //   .then((res) => res.json())
-  //   .then((data) => console.log(data));
 
   return (
     <>
-      <Navbar />
-      <Main />
+    <Navbar/>
+     <Main/> 
     </>
   );
-};
+}
 
-export default App;
+export default App
