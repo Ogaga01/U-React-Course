@@ -3,9 +3,9 @@ import { tempMovieData, tempWatchedData, average } from "./App";
 import Listbox from "./Listbox";
 import Watchedbox from "./Watchedbox";
 
-const Main = () => {
+const Main = ({query, setQuery}) => {
   return <main className="main">
-  <Listbox/>
+  <Listbox query={query} setQuery={setQuery} />
   <Watchedbox/>
 </main>;
 };

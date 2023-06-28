@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MovieList from "./MovieList";
 
-const Listbox = () => {
+const Listbox = ({ query, setQuery }) => {
   const [isOpen1, setIsOpen1] = useState(true);
 
   return (
@@ -12,7 +12,7 @@ const Listbox = () => {
       >
         {isOpen1 ? "–" : "+"}
       </button>
-      {isOpen1 && <MovieList />}
+      {isOpen1 && <MovieList query={query} setQuery={setQuery} />}
     </div>
   );
 };

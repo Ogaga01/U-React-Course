@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Main from "./Main";
 
@@ -59,11 +59,12 @@ const App = () => {
   // fetch(`http://www.omdbapi.com/?apikey=1c7bc41a&s=avatar`)
   //   .then((res) => res.json())
   //   .then((data) => console.log(data));
+  const [query, setQuery] = useState("");
 
   return (
     <>
-      <Navbar />
-      <Main />
+      <Navbar query={query} setQuery={setQuery} />
+      <Main query={query} setQuery={setQuery} />
     </>
   );
 };
