@@ -29,7 +29,7 @@ const Cart = () => {
 
   return (
     <div>
-      <Link to="/menu">&larr; Back to menu</Link>
+      <Link to="/menu" className='hover:underline hover:text-blue-600 text-blue-500 text-sm'>&larr; Back to menu</Link>
 
       <h2>Your cart, %NAME%</h2>
 
