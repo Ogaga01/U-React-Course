@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
-import Button from "../../UI/Button";
+import DeleteItem from "./DeleteItem";
+import UpdateItemQuantity from "./UpdateItemQuantity";
 import { formatCurrency } from "../../Utilities/helpers";
 
 function CartItem({ item }) {
-  const { pizzaId, name, quantity, totalPrice } = item;
+  const { id, name, quantity, totalPrice } = item;
 
   return (
     <li className="py-3 sm:flex sm:items-center sm:justify-between">
@@ -12,7 +13,8 @@ function CartItem({ item }) {
       </p>
       <div className="flex items-center justify-between sm:gap-6">
         <p className="text-sm font-bold">{formatCurrency(totalPrice)}</p>
-        <Button type='small'>Delete</Button>
+        <UpdateItemQuantity id={id} />
+        <DeleteItem id={id} />
       </div>
     </li>
   );

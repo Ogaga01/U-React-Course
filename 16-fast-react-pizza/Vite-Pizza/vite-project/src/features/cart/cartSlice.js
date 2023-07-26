@@ -27,6 +27,7 @@ const cartSlice = createSlice({
       const item = state.cart.find((item) => {
         return item.id === action.payload;
       });
+      if (item.quantity === 1) cartSlice.caseReducers.deleteItem(state, action);
       item.quantity--;
       item.totalPrice = item.quantity * item.unitPrice;
     },
@@ -43,5 +44,8 @@ export const {
   decreaseItemQuantity,
   clearCart,
 } = cartSlice.actions;
+
+export const getCurrentQuantityById = (id) => (state) =>
+  state.cart.cart.find((item) => item.id === id)?.quantity ?? 0;
 
 export default cartSlice.reducer;
